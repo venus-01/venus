@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<properties>
+		<property name="log-path">logs</property>
+	</properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout 
+              pattern="%d [%t] %-5level %logger{36} - %msg%n%throwable"/>
+        </Console>
+        <RollingFile name="RollingFile" fileName="${log-path}/venus.log" filePattern="${log-path}/venus-%d{yyyy-MM-dd}.log">
+        	<PatternLayout 
+              pattern="%d [%t] %-5level %logger{36} - %msg%n%throwable"/>
+             <Policies>
+             	<SizeBasedTriggeringPolicy size="10 KB"/>
+             </Policies>
+        </RollingFile>
+       
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
